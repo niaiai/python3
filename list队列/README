@@ -1,0 +1,12 @@
+考虑基于Python的list实现顺序表示的列表
+基本设计：
+    定义队列可能由于空而无法dequeue的异常
+    class QueueUnderflow(ValueError):
+        pass
+    将定义的顺序队列类命名为SQueue
+        _elems属性引用队列的元素存储区，是一个list对象，_len属性记录存储区的有效容量
+        _head是队列的首元素的下标，_num记录队列中元素的个数
+        在_len == _num 的i情况下出现入队列操作要考虑扩大存储区
+            __extend方法将存储区长度加倍，把原有的元素搬迁到新表里
+            __extend_pro方法在原有list上extend等长度列表，实现扩大分区，将_head前的元素搬迁到队列后面
+            __init__操作建立空队列，设置对象的属性
